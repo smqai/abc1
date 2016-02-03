@@ -1,0 +1,70 @@
+﻿@model WebApplication5.Models.Member
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<body>
+    <div class="container">
+        <br />
+        @using (@Html.BeginForm("Index", "HomeController", FormMethod.Get, new { @class = "form-inline pull-right" }))
+        {
+            @Html.ValidationSummary(true)
+            {
+                <div class="form-group">
+                    @Html.TextBoxFor(m => m.Name, new { placeholder = "Name" })
+                    @Html.TextBoxFor(m => m.Password, new { placeholder = "Password" })
+                    @Html.CheckBox("Remember me")
+                    @Html.Label("Remember me")
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+                <br />
+                @Html.ActionLink("Forgot password","ForgetPassword")
+            }
+        }
+        <br />
+        <br />
+        <br />
+        <div class="container container-center text-center" style="background-color:azure">
+            
+            @using (@Html.BeginForm("Create", "Home", FormMethod.Post, new { @class = " center-block" }))
+            {
+                @Html.ValidationSummary(true)
+                {
+                    <fieldset>
+                        <legend>Signup</legend>
+                        <div class="editor-label">
+                            @Html.LabelFor(u => u.Name)
+                        </div>
+                        <div class="editor-field">
+                            @Html.TextBoxFor(u => u.Name)
+                            @Html.ValidationMessageFor(u => u.Name)
+                        </div>
+                        <div class="editor-label">
+                            @Html.LabelFor(u => u.Password)
+                        </div>
+                        <div class="editor-field">
+                            @Html.PasswordFor(u => u.Password)
+                            @Html.ValidationMessageFor(u => u.Password)
+                        </div>
+
+                        <div class="editor-label">
+                            @Html.LabelFor(u => u.Email)
+                        </div>
+                        <div class="editor-field">
+                            @Html.TextBoxFor(u => u.Email)
+                            @Html.ValidationMessageFor(u => u.Email)
+                        </div>
+
+                        @Html.CheckBox("I agree that  all of info given above is correct ",true)
+                        <p>I agree that  all of info given above is correct</p>
+
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </fieldset>
+                }
+            }
+            <br />
+        </div>
+        <br />
+    </div>
+</body>
