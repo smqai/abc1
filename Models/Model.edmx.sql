@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 02/02/2016 03:51:00
+-- Date Created: 02/03/2016 18:35:39
 -- Generated from EDMX file: B:\C#\prac\WebApplication5\WebApplication5\Models\Model.edmx
 -- --------------------------------------------------
 
@@ -18,24 +18,24 @@ GO
 -- --------------------------------------------------
 
 IF OBJECT_ID(N'[dbo].[FK_Article_ToTable]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Article] DROP CONSTRAINT [FK_Article_ToTable];
+    ALTER TABLE [dbo].[Articles] DROP CONSTRAINT [FK_Article_ToTable];
 GO
-IF OBJECT_ID(N'[dbo].[FK_Pic_ToTable]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Pic] DROP CONSTRAINT [FK_Pic_ToTable];
+IF OBJECT_ID(N'[dbo].[FK_ArticlePic]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Pics] DROP CONSTRAINT [FK_ArticlePic];
 GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[Article]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Article];
+IF OBJECT_ID(N'[dbo].[Articles]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Articles];
 GO
-IF OBJECT_ID(N'[dbo].[Member]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Member];
+IF OBJECT_ID(N'[dbo].[Members]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Members];
 GO
-IF OBJECT_ID(N'[dbo].[Pic]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Pic];
+IF OBJECT_ID(N'[dbo].[Pics]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Pics];
 GO
 
 -- --------------------------------------------------
@@ -49,7 +49,8 @@ CREATE TABLE [dbo].[Articles] (
     [Likes] int  NULL,
     [Dislikes] int  NULL,
     [publisher] int  NOT NULL,
-    [blocked] bit  NULL
+    [blocked] bit  NULL,
+    [Title] varchar(50)  NULL
 );
 GO
 
@@ -59,7 +60,8 @@ CREATE TABLE [dbo].[Members] (
     [Name] varchar(50)  NULL,
     [Password] varchar(50)  NULL,
     [Email] varchar(50)  NULL,
-    [IsAdmin] bit  NULL
+    [IsAdmin] bit  NOT NULL,
+    [IsBanned] bit  NOT NULL
 );
 GO
 
